@@ -137,7 +137,7 @@ fun CartaoDeVisita(){
 
             )
             Text(
-                text = "alexia@etec.sp.gov.br",
+                text = "alexi@gmail.com",
                 fontFamily = FontFamily.Default,
                 fontSize = 15.sp,
                 textAlign = TextAlign.Center,
