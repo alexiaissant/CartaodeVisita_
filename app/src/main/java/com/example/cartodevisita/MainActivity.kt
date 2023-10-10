@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -49,9 +50,11 @@ class MainActivity : ComponentActivity() {
 @Preview(showSystemUi = true)
 @Composable
 fun CartaoDeVisita() {
+
     Column(
         modifier = Modifier.background(Color(16,69,79)),
-        verticalArrangement = Arrangement.SpaceBetween
+        verticalArrangement = Arrangement.SpaceBetween,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Column(
             modifier = Modifier
@@ -74,8 +77,8 @@ fun CartaoDeVisita() {
                             (
                             borderWidth,
                             Color.LightGray
-                                    ),
-                            CircleShape
+                        ),
+                        CircleShape
                     )
 
             )
@@ -94,92 +97,53 @@ fun CartaoDeVisita() {
                 fontSize = 20.sp,
                 color = Color.LightGray,
                 textAlign = TextAlign.Center,
-                fontFamily = FontFamily.Default
+                fontFamily = FontFamily.SansSerif,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier
+                    .padding(
+                        start = 10.dp,
+                    end = 10.dp
+                    )
 
             )
         }
         Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 10.dp)
+                .padding(bottom = 20.dp)
             ,
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Bottom
+            verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            Row(
-                horizontalArrangement = Arrangement.Center,
+            Contatos(text = "+55 (11) 99722-3452", image = R.drawable.ultima )
+            Contatos(text = "alexia_issant", image = R.drawable.inste)
+            Contatos(text = "alexia.santos12@etec.sp.gov.com", image = R.drawable.email)
 
-                ) {
-                Image(
-                    painter = painterResource(id = R.drawable.ultima),
-                    contentDescription = null,
-                    contentScale = ContentScale.Fit,
-                    modifier = Modifier
-                        .size(40.dp)
-                        .padding(bottom = 10.dp)
-
-                )
-                Text(
-                    text = "+55 11 997552768",
-                    fontFamily = FontFamily.Default,
-                    fontSize = 15.sp,
-                    textAlign = TextAlign.Center,
-                    color = Color(202,202,202,79),
-                    modifier = Modifier
-                        .padding(start = 10.dp)
-                        .padding(top = 3.dp)
-                )
-            }
-            Row(
-                horizontalArrangement = Arrangement.Center,
-
-                ) {
-                Image(
-                    painter = painterResource(id = R.drawable.inste),
-                    contentDescription = null,
-                    contentScale = ContentScale.Fit,
-                    modifier = Modifier
-                        .size(40.dp)
-                        .padding(bottom = 10.dp)
-
-                )
-                Text(
-                    text = "@alexia_issant",
-                    fontFamily = FontFamily.Default,
-                    fontSize = 15.sp,
-                    textAlign = TextAlign.Center,
-                    color = Color(202,202,202,79),
-                    modifier = Modifier
-                        .padding(start = 10.dp)
-                        .padding(top = 3.dp)
-                )
-            }
-            Row(
-                horizontalArrangement = Arrangement.Center,
-
-                ) {
-                Image(
-                    painter = painterResource(id = R.drawable.email),
-                    contentDescription = null,
-                    contentScale = ContentScale.Fit,
-                    modifier = Modifier
-                        .size(40.dp)
-                        .padding(
-                            bottom = 10.dp,
-                            start = 10.dp)
-
-                )
-                Text(
-                    text = "alexi@gmail.com",
-                    fontFamily = FontFamily.Default,
-                    fontSize = 15.sp,
-                    textAlign = TextAlign.Center,
-                    color = Color(202,202,202,79),
-                    modifier = Modifier
-                        .padding(start = 10.dp)
-                        .padding(top = 3.dp)
-                )
-            }
         }
     }
+}
+@Composable
+fun Contatos(text:String, image:Int){
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(15.dp),
+        verticalAlignment = Alignment.CenterVertically
+
+        ) {
+        Image(
+            painter = painterResource(id = image),
+            contentDescription = null,
+            contentScale = ContentScale.Fit,
+            modifier = Modifier
+                .size(30.dp)
+
+
+        )
+        Text(
+            text = text,
+            fontFamily = FontFamily.Default,
+            fontSize = 15.sp,
+            textAlign = TextAlign.Center,
+            color = Color(202, 202, 202, 79),
+
+        )
+    }
+
 }
